@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="UniversalPlayground.Views.NavigationRoot"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UniversalPlayground.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:appmodel="using:Windows.ApplicationModel"
+    mc:Ignorable="d">
+
+    <Grid x:Name="NavRootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Rectangle x:Name="BorderRect" x:Load="False" 
+                   Fill="{StaticResource NavigationViewDefaultPaneBackground}" 
+                   HorizontalAlignment="Left" Height="1000" Width="48"/>
+
+        <NavigationView IsSettingsVisible="True" x:Name="navview" AlwaysShowHeader="False" ItemInvoked="Navview_ItemInvoked">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Browse videos" IsSelected="True">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE720;" ></FontIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Now playing" >
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="/Assets/BCastMDL2.ttf#BuildCast MDL2 Assets" Glyph="&#xE93D;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Favorites" >
+                    <NavigationViewItem.Icon>
+                        <FontIcon x:Name="FavoriteStaticIcon" FontFamily="Segoe MDL2 Assets" Glyph="&#xE728;" ></FontIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Notes" >
+                    <NavigationViewItem.Icon>
+                        <FontIcon x:Name="NoteStaticIcon" FontFamily="/Assets/BCastMDL2.ttf#BuildCast MDL2 Assets" Glyph="&#xECFC;" ></FontIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Downloads" >
+                    <NavigationViewItem.Icon>
+                        <FontIcon x:Name="DoanlodsStaticIcon" FontFamily="Segoe MDL2 Assets" Glyph="&#xE896;" ></FontIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <Frame x:Name="appNavFrame" Navigated="AppNavFrame_Navigated">
+            </Frame>
+        </NavigationView>
+        <TextBlock x:Name="windowTitle" Style="{ThemeResource CaptionTextBlockStyle}" 
+                   Visibility="{x:Bind TitleHelper.TitleVisibility, Mode=OneWay}" 
+                   Margin="{x:Bind TitleHelper.TitlePosition, Mode=OneWay}" 
+                   VerticalAlignment="Top" Text="{x:Bind appmodel:Package.Current.DisplayName}" 
+                   animations:Implicit.Animations="{StaticResource LayoutImplicitAnimations}"></TextBlock>
+    </Grid>
+</Page>

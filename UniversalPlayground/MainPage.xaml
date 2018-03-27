@@ -8,6 +8,12 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <NavigationView Content="NavigationView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Notebooks" Icon="Library"/>
+                <NavigationViewItem Content="Calendar" Icon="Calendar"/>
+                <NavigationViewItem Content="Tasks" Icon="AllApps"/>
+            </NavigationView.MenuItems>
+        </NavigationView>
     </Grid>
 </Page>
